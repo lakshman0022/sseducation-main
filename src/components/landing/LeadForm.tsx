@@ -21,7 +21,7 @@ export function LeadForm() {
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
@@ -36,11 +36,34 @@ export function LeadForm() {
     }
     setErrors({});
     setSubmitting(true);
-    setTimeout(() => {
+
+    // Google Form details
+    const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdLoigxaiQ05jssy6oUcVgENjCRBFjE1yFBmmCmB1EnPVZghw/formResponse";
+    
+    // Create form data for Google
+    const googleFormData = new FormData();
+    googleFormData.append("entry.1502716309", parsed.data.name);
+    googleFormData.append("entry.1202722742", parsed.data.phone);
+    googleFormData.append("entry.267493369", parsed.data.email || "");
+    googleFormData.append("entry.921865976", parsed.data.state);
+    googleFormData.append("entry.85122333", parsed.data.branch);
+
+    try {
+      // 1. Silent submit to Google Forms
+      await fetch(FORM_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: googleFormData
+      });
+
       setSubmitting(false);
       setSubmitted(true);
-      toast.success("Thank you! Our counsellor will call you within 30 minutes.");
-    }, 800);
+      toast.success("Thank you! Your request has been received.");
+    } catch (error) {
+      console.error("Submission error:", error);
+      setSubmitting(false);
+      toast.error("Something went wrong. Please try again later.");
+    }
   };
 
   if (submitted) {
@@ -62,12 +85,6 @@ export function LeadForm() {
         <p className="mt-2 text-muted-foreground">
           Our KIIT admission counsellor will call you within 30 minutes.
         </p>
-        <a
-          href="tel:+919933085333"
-          className="mt-5 inline-flex items-center gap-2 text-primary font-semibold hover:underline"
-        >
-          <Phone className="h-4 w-4" /> Or call now: +91 99330 85333
-        </a>
       </motion.div>
     );
   }
