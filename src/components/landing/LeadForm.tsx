@@ -85,7 +85,7 @@ export function LeadForm() {
           Limited Seats — 2026
         </span>
         <h3 className="mt-3 text-2xl font-bold text-foreground leading-tight">
-          Book Free Counselling Call.
+          Book Free Counselling Call
         </h3>
         <p className="text-sm text-muted-foreground mt-1">
           Get instant seat & fee guidance for KIIT B.Tech
