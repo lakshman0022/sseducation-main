@@ -1,0 +1,14 @@
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<h1>404 Not Found</h1>
+<ul>
+<li>Code: NoSuchKey</li>
+<li>Message: The specified key does not exist.</li>
+<li>Key: images/logo.png</li>
+<li>RequestId: EMTABYFHW2P5CG26</li>
+<li>HostId: ARo8EE7M1cL8oxspS1Dcc43bnbD2xLVKHZjcMOqzBUJU/OVAvR4lxX4LHESAHthUigr+ipFBnd8=</li>
+</ul>
+<hr/>
+</body>
+</html>

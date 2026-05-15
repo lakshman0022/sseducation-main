@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import mainLogo from "@/assets/main logo.png";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -43,8 +44,26 @@ export function Footer() {
 
       <div className="relative container mx-auto px-4 py-16">
         <div className="grid lg:grid-cols-3 gap-12">
-          {/* Branch offices */}
-          <div className="space-y-8">
+          {/* Brand + Branch offices */}
+          <div className="space-y-12">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4"
+            >
+              <img 
+                src={mainLogo} 
+                alt="SS Education" 
+                className="h-12 w-auto object-contain brightness-0 invert" 
+              />
+              <div className="flex flex-col leading-tight">
+                <span className="font-black text-xl tracking-tight text-white">SS EDUCATION</span>
+                <span className="text-[10px] uppercase tracking-[0.25em] font-bold text-white/40">Consultancy Services</span>
+              </div>
+            </motion.div>
+
+            <div className="space-y-8">
             {offices.map((office, i) => (
               <motion.div
                 key={office.title}
@@ -64,6 +83,7 @@ export function Footer() {
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
 
           {/* Contact + Quick Links */}

@@ -37,10 +37,7 @@ export function LeadForm() {
     setErrors({});
     setSubmitting(true);
 
-    // Google Form details
     const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdLoigxaiQ05jssy6oUcVgENjCRBFjE1yFBmmCmB1EnPVZghw/formResponse";
-    
-    // Create form data for Google
     const googleFormData = new FormData();
     googleFormData.append("entry.1502716309", parsed.data.name);
     googleFormData.append("entry.1202722742", parsed.data.phone);
@@ -49,18 +46,15 @@ export function LeadForm() {
     googleFormData.append("entry.85122333", parsed.data.branch);
 
     try {
-      // 1. Silent submit to Google Forms
       await fetch(FORM_URL, {
         method: "POST",
         mode: "no-cors",
         body: googleFormData
       });
-
       setSubmitting(false);
       setSubmitted(true);
       toast.success("Thank you! Your request has been received.");
     } catch (error) {
-      console.error("Submission error:", error);
       setSubmitting(false);
       toast.error("Something went wrong. Please try again later.");
     }
@@ -69,21 +63,21 @@ export function LeadForm() {
   if (submitted) {
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="rounded-2xl bg-card p-8 shadow-[var(--shadow-float)] text-center border border-border"
+        className="rounded-[2.5rem] bg-white p-10 text-center border border-slate-100"
       >
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-success/15 ring-8 ring-success/5"
+          className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-emerald-50 ring-8 ring-emerald-50/50"
         >
-          <CheckCircle2 className="h-11 w-11 text-success" />
+          <CheckCircle2 className="h-12 w-12 text-emerald-500" />
         </motion.div>
-        <h3 className="text-2xl font-bold text-foreground">Request Received!</h3>
-        <p className="mt-2 text-muted-foreground">
-          Our KIIT admission counsellor will call you within 30 minutes.
+        <h3 className="text-3xl font-black text-slate-900 tracking-tight">Request Received!</h3>
+        <p className="mt-4 text-slate-500 font-medium leading-relaxed">
+          Our expert counselor will call you within 15 minutes for a free session.
         </p>
       </motion.div>
     );
@@ -92,45 +86,37 @@ export function LeadForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative rounded-2xl bg-card p-6 sm:p-7 shadow-[var(--shadow-float)] border border-border overflow-hidden"
+      className="relative space-y-5"
     >
-      <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-[image:var(--gradient-accent)] opacity-15 blur-3xl" />
-      <div className="relative">
-      <div className="mb-5 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 px-3 py-1 text-xs font-bold text-accent-foreground uppercase tracking-wide">
-          <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-          Limited Seats — 2026
-        </span>
-        <h3 className="mt-3 text-2xl font-bold text-foreground leading-tight">
-          Book Free Counselling Call
-        </h3>
-        <p className="text-sm text-muted-foreground mt-1">
-          Get instant seat & fee guidance for KIIT B.Tech
-        </p>
-      </div>
+      <div className="space-y-4">
+        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
+          <Label htmlFor="name" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5 block">Full Name *</Label>
+          <Input id="name" name="name" placeholder="E.g. Rahul Sharma" className="h-14 rounded-2xl bg-slate-50 border-slate-100 focus:bg-white focus:ring-4 focus:ring-primary/5 transition-all font-medium" />
+          {errors.name && <p className="text-[10px] font-bold text-red-500 mt-1 uppercase tracking-wider">{errors.name}</p>}
+        </motion.div>
 
-      <div className="space-y-3.5">
-        <div>
-          <Label htmlFor="name" className="text-xs font-semibold">Full Name *</Label>
-          <Input id="name" name="name" placeholder="Your full name" className="mt-1" />
-          {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
-        </div>
-        <div>
-          <Label htmlFor="phone" className="text-xs font-semibold">Mobile Number *</Label>
-          <Input id="phone" name="phone" type="tel" placeholder="10-digit mobile" maxLength={10} className="mt-1" />
-          {errors.phone && <p className="text-xs text-destructive mt-1">{errors.phone}</p>}
-        </div>
-        <div>
-          <Label htmlFor="email" className="text-xs font-semibold">Email (optional)</Label>
-          <Input id="email" name="email" type="email" placeholder="name@example.com" className="mt-1" />
-          {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
-        </div>
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <Label htmlFor="state" className="text-xs font-semibold">State *</Label>
+        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
+          <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5 block">Mobile Number *</Label>
+          <div className="relative">
+            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Input id="phone" name="phone" type="tel" placeholder="10-digit mobile number" maxLength={10} className="h-14 pl-12 rounded-2xl bg-slate-50 border-slate-100 focus:bg-white focus:ring-4 focus:ring-primary/5 transition-all font-medium" />
+          </div>
+          {errors.phone && <p className="text-[10px] font-bold text-red-500 mt-1 uppercase tracking-wider">{errors.phone}</p>}
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
+          <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5 block">Email (optional)</Label>
+          <Input id="email" name="email" type="email" placeholder="name@example.com" className="h-14 rounded-2xl bg-slate-50 border-slate-100 focus:bg-white focus:ring-4 focus:ring-primary/5 transition-all font-medium" />
+        </motion.div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
+            <Label htmlFor="state" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5 block">State *</Label>
             <Select name="state">
-              <SelectTrigger id="state" className="mt-1"><SelectValue placeholder="Select" /></SelectTrigger>
-              <SelectContent>
+              <SelectTrigger id="state" className="h-14 rounded-2xl bg-slate-50 border-slate-100 focus:bg-white transition-all font-medium">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="rounded-2xl border-slate-100 shadow-2xl">
                 <SelectItem value="Bihar">Bihar</SelectItem>
                 <SelectItem value="Jharkhand">Jharkhand</SelectItem>
                 <SelectItem value="West Bengal">West Bengal</SelectItem>
@@ -138,33 +124,45 @@ export function LeadForm() {
                 <SelectItem value="Other">Other</SelectItem>
               </SelectContent>
             </Select>
-            {errors.state && <p className="text-xs text-destructive mt-1">{errors.state}</p>}
-          </div>
-          <div>
-            <Label htmlFor="branch" className="text-xs font-semibold">Branch *</Label>
+            {errors.state && <p className="text-[10px] font-bold text-red-500 mt-1 uppercase tracking-wider">{errors.state}</p>}
+          </motion.div>
+          <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>
+            <Label htmlFor="branch" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 mb-1.5 block">Branch *</Label>
             <Select name="branch">
-              <SelectTrigger id="branch" className="mt-1"><SelectValue placeholder="Select" /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="CSE">CSE</SelectItem>
-                <SelectItem value="AI/ML">AI / ML</SelectItem>
-                <SelectItem value="ECE">ECE</SelectItem>
-                <SelectItem value="IT">IT</SelectItem>
+              <SelectTrigger id="branch" className="h-14 rounded-2xl bg-slate-50 border-slate-100 focus:bg-white transition-all font-medium">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="rounded-2xl border-slate-100 shadow-2xl">
+                <SelectItem value="CSE">CSE / IT</SelectItem>
+                <SelectItem value="AI/ML">AI / ML / Data</SelectItem>
+                <SelectItem value="ECE">Electronics</SelectItem>
                 <SelectItem value="Mechanical">Mechanical</SelectItem>
-                <SelectItem value="Civil">Civil</SelectItem>
-                <SelectItem value="Other">Other</SelectItem>
+                <SelectItem value="Civil">Civil / Architecture</SelectItem>
+                <SelectItem value="Other">Others</SelectItem>
               </SelectContent>
             </Select>
-            {errors.branch && <p className="text-xs text-destructive mt-1">{errors.branch}</p>}
-          </div>
+            {errors.branch && <p className="text-[10px] font-bold text-red-500 mt-1 uppercase tracking-wider">{errors.branch}</p>}
+          </motion.div>
         </div>
 
-        <Button type="submit" variant="hero" size="lg" className="w-full mt-2 whitespace-normal text-center leading-tight" disabled={submitting}>
-          {submitting ? "Submitting..." : (<><span>Get Free Counselling</span><ArrowRight className="h-4 w-4" /></>)}
-        </Button>
-        <p className="text-[11px] text-center text-muted-foreground">
-          🔒 Your info is 100% safe. No spam — counsellor call only.
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ delay: 0.6 }}
+          className="pt-2"
+        >
+          <Button 
+            type="submit" 
+            className="w-full h-16 rounded-2xl bg-primary hover:bg-primary-glow text-white font-black text-lg shadow-xl shadow-primary/20 hover:shadow-primary/40 active:scale-95 transition-all flex items-center justify-center gap-3"
+            disabled={submitting}
+          >
+            {submitting ? "Processing..." : (<>Get Free Counselling <ArrowRight className="h-5 w-5" /></>)}
+          </Button>
+        </motion.div>
+        
+        <p className="text-[10px] text-center text-slate-400 font-bold uppercase tracking-[0.1em] pt-2">
+          🔒 Secure & Confidential • Counsellor Call Only
         </p>
-      </div>
       </div>
     </form>
   );

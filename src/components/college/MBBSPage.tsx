@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
+
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+
 import {
-  Phone,
   Sparkles,
   MapPin,
   Trophy,
-  Stethoscope,
   HeartPulse,
   Microscope,
   GraduationCap,
@@ -24,7 +24,6 @@ import {
   BadgeCheck,
   Wallet,
   MessageCircle,
-  TrendingUp,
   ArrowRight,
   ShieldCheck,
   Dna,
@@ -33,9 +32,8 @@ import {
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Toaster } from "@/components/ui/sonner";
 import { MBBSLeadForm } from "./MBBSLeadForm";
-import { Footer } from "@/components/landing/Footer";
 import type { CollegeConfig } from "@/data/colleges";
-import { Link } from "react-router-dom";
+
 
 const ICONS: Record<string, LucideIcon> = {
   trophy: Trophy,
@@ -57,7 +55,6 @@ const SNAPSHOT_ICONS: LucideIcon[] = [MapPin, GraduationCap, HeartPulse, Microsc
 export function MBBSPage({ config }: { config: CollegeConfig }) {
   return (
     <main className="min-h-screen bg-[#020617] text-slate-200 selection:bg-emerald-500/30 selection:text-emerald-200">
-      <TopBar />
       <HeroSection config={config} />
       <StatsMarquee />
       <SnapshotSection config={config} />
@@ -66,41 +63,11 @@ export function MBBSPage({ config }: { config: CollegeConfig }) {
       <ProcessSection config={config} />
       <FAQSection config={config} />
       <CTASection config={config} />
-      <Footer />
       <Toaster richColors position="top-center" />
     </main>
   );
 }
 
-function TopBar() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return (
-    <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "bg-slate-950/80 backdrop-blur-lg border-b border-white/5 py-3" : "py-6"}`}>
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:rotate-6 transition-transform">
-            <Stethoscope className="h-6 w-6 text-white" />
-          </div>
-          <span className="text-xl font-black tracking-tight text-white">SS <span className="text-emerald-500">MED</span></span>
-        </Link>
-        <div className="flex items-center gap-6">
-          <a href="tel:+919933085333" className="hidden md:flex items-center gap-2 text-sm font-bold text-slate-300 hover:text-emerald-400 transition-colors">
-            <Phone className="h-4 w-4" /> +91 99330 85333
-          </a>
-          <a href="#counselling" className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-emerald-500/20 transition-all active:scale-95">
-            Book Counselling
-          </a>
-        </div>
-      </div>
-    </nav>
-  );
-}
 
 function HeroSection({ config }: { config: CollegeConfig }) {
   return (
