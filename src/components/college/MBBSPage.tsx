@@ -8,6 +8,7 @@ import {
   Sparkles,
   MapPin,
   Trophy,
+  Stethoscope,
   HeartPulse,
   Microscope,
   GraduationCap,
