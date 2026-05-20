@@ -9,7 +9,7 @@ const COURSE_LIST = [
     icon: GraduationCap,
     color: "bg-blue-600",
     description: "Secure your future in India's top engineering hubs like Bangalore, Pune, and Chennai. Specializations in CSE, AI/ML, Data Science, IT, and more.",
-    features: ["Direct Admission in RVCE, Ramaiah, KIIT, IEM", "Management Quota Guidance", "NIRF Top Ranked Colleges", "Guaranteed Placement Support"],
+    features: ["Direct Admission in RVCE, Ramaiah, KIIT, IEM, SRM", "Management Quota Guidance", "NIRF Top Ranked Colleges", "Guaranteed Placement Support"],
     cta: "Explore Colleges",
     link: "/engineering"
   },

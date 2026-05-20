@@ -41,6 +41,7 @@ const App = () => (
           <Route path="/rv-college-btech-admission-2026" element={<MainLayout><CollegeRoute configKey="rvce" /></MainLayout>} />
           <Route path="/ramaiah-institute-btech-admission-2026" element={<MainLayout><CollegeRoute configKey="ramaiah" /></MainLayout>} />
           <Route path="/iem-kolkata-btech-admission-2026" element={<MainLayout><CollegeRoute configKey="iem" /></MainLayout>} />
+          <Route path="/srm-university-btech-admission-2026" element={<MainLayout><CollegeRoute configKey="srm" /></MainLayout>} />
           <Route path="/mbbs" element={<MainLayout><CollegeRoute configKey="mbbs" /></MainLayout>} />
           
           {/* Ad Landing Pages (No Nav/Footer) */}
@@ -51,6 +52,7 @@ const App = () => (
           <Route path="/apply/rvce" element={<AdLandingPage />} />
           <Route path="/apply/ramaiah" element={<AdLandingPage />} />
           <Route path="/apply/iem" element={<AdLandingPage />} />
+          <Route path="/apply/srm" element={<AdLandingPage />} />
           <Route path="/apply/mbbs" element={<AdLandingPage />} />
           
           {/* Admin Panel */}

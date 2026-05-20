@@ -9,28 +9,25 @@ const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   {
-    label: "Courses",
-    href: "/courses",
-    children: [
-      { label: "B.Tech Engineering", href: "/engineering" },
-      { label: "MBBS Admission", href: "/mbbs" },
-      { label: "MBA / Management", href: "/courses#mba" },
-      { label: "Law Admissions", href: "/courses#law" },
-      { label: "BCA / MCA", href: "/courses#bca" },
-      { label: "BBA / Commerce", href: "/courses#bba" },
-    ],
-  },
-  {
     label: "Colleges",
     href: "#",
     children: [
-      { label: "KIIT University", href: "/rv-college-btech-admission-2026" }, // Reusing existing paths for now
+      { label: "B.Tech Engineering", isHeader: true },
       { label: "RV College (RVCE)", href: "/rv-college-btech-admission-2026" },
       { label: "MS Ramaiah (MSRIT)", href: "/ramaiah-institute-btech-admission-2026" },
       { label: "IEM Kolkata", href: "/iem-kolkata-btech-admission-2026" },
+      { label: "SRM University", href: "/srm-university-btech-admission-2026" },
+      { label: "KIIT University", href: "/college/kiit" },
+      
+      { label: "Medical Admissions", isHeader: true },
+      { label: "MBBS Admission India", href: "/mbbs" },
+      
+      { label: "Management & Others", isHeader: true },
+      { label: "MBA / Management", href: "/courses#mba" },
+      { label: "Law & Commerce & Others", href: "/courses" },
     ],
   },
-  { label: "Success Stories", href: "/results" },
+  { label: "Compare Colleges", href: "/results" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -115,14 +112,23 @@ export const Navbar = () => {
                       transition={{ duration: 0.2, ease: "easeOut" }}
                       className="absolute top-full left-0 mt-4 w-64 bg-white/95 backdrop-blur-xl rounded-[1.5rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] border border-slate-100 overflow-hidden py-3 px-2"
                     >
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          to={child.href}
-                          className="block px-4 py-3 text-xs font-bold text-slate-600 hover:bg-primary/5 hover:text-primary rounded-xl transition-all uppercase tracking-wider"
-                        >
-                          {child.label}
-                        </Link>
+                      {link.children.map((child, childIdx) => (
+                        (child as any).isHeader ? (
+                          <div
+                            key={childIdx}
+                            className="px-4 py-2 mt-2 text-[10px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-50"
+                          >
+                            {child.label}
+                          </div>
+                        ) : (
+                          <Link
+                            key={child.label}
+                            to={child.href || "#"}
+                            className="block px-4 py-2.5 text-xs font-bold text-slate-600 hover:bg-primary/5 hover:text-primary rounded-xl transition-all uppercase tracking-wider pl-6"
+                          >
+                            {child.label}
+                          </Link>
+                        )
                       ))}
                     </motion.div>
                   )}
@@ -187,14 +193,24 @@ export const Navbar = () => {
                   </Link>
                   {link.children && (
                     <div className="mt-2 ml-4 flex flex-col gap-2 border-l-2 border-slate-100 pl-4">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          to={child.href}
-                          className="text-slate-600 font-medium py-1"
-                        >
-                          {child.label}
-                        </Link>
+                      {link.children.map((child, childIdx) => (
+                        (child as any).isHeader ? (
+                          <div
+                            key={childIdx}
+                            className="text-slate-400 text-xs font-black uppercase tracking-wider mt-3 mb-1 pl-2"
+                          >
+                            {child.label}
+                          </div>
+                        ) : (
+                          <Link
+                            key={child.label}
+                            to={child.href || "#"}
+                            className="text-slate-600 font-semibold py-1.5 pl-4 block hover:text-primary transition-colors text-sm"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {child.label}
+                          </Link>
+                        )
                       ))}
                     </div>
                   )}

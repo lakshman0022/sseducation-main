@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, GraduationCap, Users, BookOpen, Globe, MessageCircle, Phone, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, CheckCircle2, GraduationCap, Users, BookOpen, Globe, MessageCircle, Phone, ShieldCheck, Star, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Stats } from "@/components/landing/Stats";
 import { CollegeCard } from "@/components/landing/CollegeCard";
@@ -488,6 +488,149 @@ const Home = () => {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Live Admission Alerts & News Feed */}
+      <section className="py-24 bg-white relative z-20 overflow-hidden">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-16">
+            <div className="lg:w-1/2">
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-red-600 font-bold uppercase tracking-[0.2em] text-xs">Live Alerts</span>
+                <div className="h-[2px] w-12 bg-red-600 animate-pulse" />
+                <span className="h-2 w-2 rounded-full bg-red-600 animate-ping" />
+              </div>
+              <h2 className="text-4xl lg:text-5xl font-black text-slate-900 leading-[1.1] tracking-tight">
+                Admission News & <br />
+                <span className="text-red-600">Live Updates 2026</span>
+              </h2>
+            </div>
+            <div className="lg:w-5/12 text-slate-500 font-medium leading-relaxed pt-8">
+              <p>
+                Stay up to date with the latest board cutoffs, national level entrance exam dates, seat allocation patterns, and crucial announcements from SS Education Consultancy.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* Live Alerts Sidebar (Ticker style) */}
+            <div className="lg:col-span-1 bg-slate-50 border border-slate-100 rounded-[2.5rem] p-8 h-full flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="h-3 w-3 bg-red-600 rounded-full animate-ping shrink-0" />
+                  <h3 className="text-xs font-black uppercase tracking-widest text-slate-900">Immediate Actions Required</h3>
+                </div>
+                
+                <div className="space-y-6">
+                  {[
+                    {
+                      tag: "SRMIST",
+                      text: "SRM Kattankulathur B.Tech admissions open. Candidate PCM aggregate must be min 60% with age above 16.5 years by July 31, 2026.",
+                      time: "2 hours ago"
+                    },
+                    {
+                      tag: "WBJEE",
+                      text: "WBJEE 2026 application deadlines announced. IEM Kolkata management quota enquiries active.",
+                      time: "5 hours ago"
+                    },
+                    {
+                      tag: "COMEDK",
+                      text: "COMEDK 2026 registration dates released. RVCE & Ramaiah seat booking guidelines active.",
+                      time: "1 day ago"
+                    },
+                    {
+                      tag: "NEET UG",
+                      text: "NEET UG 25% quota Deemed university registrations opening dates updated.",
+                      time: "2 days ago"
+                    }
+                  ].map((alert, index) => (
+                    <div key={index} className="flex gap-4 items-start border-b border-slate-100 pb-5 last:border-0 last:pb-0">
+                      <span className="px-2.5 py-1 rounded bg-red-100 text-[9px] font-black uppercase tracking-wider text-red-600 shrink-0">
+                        {alert.tag}
+                      </span>
+                      <div>
+                        <p className="text-xs text-slate-700 font-medium leading-relaxed">{alert.text}</p>
+                        <span className="text-[10px] font-semibold text-slate-400 mt-1 block">{alert.time}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-slate-200">
+                <a 
+                  href="tel:+919933085333" 
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-red-600 text-white font-bold rounded-xl text-xs uppercase tracking-widest hover:bg-red-700 transition-colors shadow-lg shadow-red-500/10 text-center"
+                >
+                  Get Immediate Call Alert
+                </a>
+              </div>
+            </div>
+
+            {/* Major News Grid */}
+            <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  title: "SRMJEEE 2026 Complete Direct Admission Eligibility & Registration Portal Live",
+                  desc: "The Kattankulathur campus B.Tech application process starts. Candidates from Bihar & West Bengal must maintain minimum aggregate 60% in Physics, Chemistry & Math. Check special board exemption criteria here.",
+                  date: "May 20, 2026",
+                  category: "SRM Chennai",
+                  color: "border-t-4 border-t-red-600"
+                },
+                {
+                  title: "IEM Kolkata & Heritage Engineering Management Quota Allocation Rules",
+                  desc: "WBJEE board clarifies admission guidelines. Top private colleges in West Bengal open direct booking channels for out-of-state aspirants. Highly recommended for students with high marks who missed WBJEE registry.",
+                  date: "May 18, 2026",
+                  category: "WBJEE Update",
+                  color: "border-t-4 border-t-blue-600"
+                },
+                {
+                  title: "RVCE & MS Ramaiah COMEDK Seat Matrix: Core vs Tech Branch Distribution",
+                  desc: "Bangalore's premium engineering institutions release updated fee structures for 2026 management quota. SS Education announces early-bird application support to guarantee CS/IS/AI branches.",
+                  date: "May 16, 2026",
+                  category: "COMEDK Guide",
+                  color: "border-t-4 border-t-indigo-600"
+                },
+                {
+                  title: "SS Education Consultancy Free Admission Awareness Campaign Across Bihar & Jharkhand",
+                  desc: "Meet our top counsellors face-to-face in Patna, Ranchi, and Durgapur. Grab detailed brochures on fees, placement comparison, and secure direct-allotment letters on spot. Entry free for students & parents.",
+                  date: "May 14, 2026",
+                  category: "Consultancy Event",
+                  color: "border-t-4 border-t-emerald-600"
+                }
+              ].map((news, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ y: -8 }}
+                  className={`bg-slate-50 p-8 rounded-[2.5rem] border border-slate-100 flex flex-col justify-between hover:shadow-2xl hover:bg-white transition-all duration-300 ${news.color}`}
+                >
+                  <div>
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                        <Calendar className="h-3.5 w-3.5" /> {news.date}
+                      </span>
+                      <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+                      <span className="text-[10px] font-black uppercase tracking-wider text-red-600">
+                        {news.category}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-black text-slate-900 mb-3 leading-snug hover:text-red-600 transition-colors cursor-pointer">
+                      {news.title}
+                    </h3>
+                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                      {news.desc}
+                    </p>
+                  </div>
+                  <div className="mt-6 pt-4 border-t border-slate-100/50">
+                    <Link to="/contact" className="text-xs font-black uppercase tracking-widest text-slate-900 hover:text-red-600 flex items-center gap-1 group">
+                      Enquire Details <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

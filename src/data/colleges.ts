@@ -10,6 +10,8 @@ import iemLab from "@/assets/iem-lab.jpg";
 import celebrateImg from "@/assets/students-celebrate.jpg";
 import mbbsHero from "@/assets/mbbs-hero.png";
 import medicalBuilding from "@/assets/medical-building.png";
+import srmCampus from "@/assets/srm-campus.png";
+import srmLab from "@/assets/srm-lab.png";
 
 export type CollegeConfig = {
   slug: string;
@@ -403,6 +405,92 @@ export const COLLEGES: Record<string, CollegeConfig> = {
     seo: {
       title: "MBBS Admission in India 2026 — Direct Seat | SS Education",
       description: "Secure your MBBS admission in India 2026. Get into top NMC-approved private & deemed medical colleges. Expert counselling for NEET UG qualified students. Call +91 99330 85333.",
+    },
+  },
+
+  srm: {
+    slug: "srm-university-btech-admission-2026",
+    short: "SRMIST",
+    name: "SRM Institute of Science and Technology",
+    city: "Chennai (Kattankulathur)",
+    state: "Tamil Nadu",
+    hero: {
+      eyebrow: "Top 30 NIRF Ranked Engineering Institute",
+      headline: "Get Direct B.Tech Admission in",
+      headlineHighlight: "SRM University 2026",
+      subline: "Direct Seat & Counselling Support — Out-of-State Student Admission Open",
+      subhead:
+        "One of India's largest and most vibrant engineering campuses. 100% placement record. Special guidance on SRMJEEE, board marks eligibility, and direct admissions pathways.",
+    },
+    trustStats: [
+      { value: "₹1.10 Cr", label: "Highest Pkg" },
+      { value: "40,000+", label: "Active Students" },
+      { value: "Chennai", label: "Automobile & Tech Hub" },
+    ],
+    carousel: [
+      { img: srmCampus, eyebrow: "Main KTR Campus", title: "World-Class Infrastructure", subtitle: "Lush green 250+ acre campus in Chennai" },
+      { img: srmLab, eyebrow: "Advanced Research Labs", title: "Next-Gen AI & Tech Hubs", subtitle: "Collaborative research with global tech leaders" },
+      { img: celebrateImg, eyebrow: "Top Recruiter Network", title: "Over 800+ Top Recruiters", subtitle: "Google, Microsoft, Amazon, and leading global MNCs" },
+    ],
+    snapshot: [
+      { label: "Location", value: "Chennai, Tamil Nadu" },
+      { label: "NIRF Rank", value: "Top 30 Engineering India" },
+      { label: "Highest Package", value: "₹1.10 Crore" },
+      { label: "Average Package", value: "₹8.5 LPA" },
+      { label: "Total Fees", value: "₹2.5 – ₹4.5 Lakhs / yr" },
+      { label: "Eligibility", value: "Min 60% PCM in 10+2" },
+    ],
+    about: {
+      eyebrow: "About SRM University",
+      title: "India's Leading",
+      titleHighlight: "Private Science & Technology Hub",
+      body: "SRM Institute of Science and Technology (formerly SRM University) is a highly prestigious, multi-campus university. Its flagship Kattankulathur (KTR) campus near Chennai hosts state-of-the-art labs and a massive active student population. SRM is highly sought after by students from Bihar, West Bengal, and Jharkhand for its robust IT and Core placement records. With SS Education, we make the SRM admission process simple and stress-free by offering end-to-end support.",
+      image: srmCampus,
+      imageAlt: "SRM University Kattankulathur main campus",
+      floatStat: { value: "Top 30", label: "NIRF Eng Rank" },
+      floatStat2: { value: "₹1.10 Cr", label: "Highest Placement" },
+    },
+    why: {
+      title: "Why Choose",
+      titleHighlight: "SRM University Chennai",
+      image: srmLab,
+      imageAlt: "Students conducting experiments in SRM Lab",
+      imageOverlayTitle: "A Global University Experience",
+      imageOverlaySubtitle: "Lush multi-acre modern campus with international faculty",
+      points: [
+        { title: "Rigorous 10+2 Academic Eligibility", desc: "Requires min 60% aggregate in Physics, Chemistry, and Mathematics (PCM).", iconKey: "award" },
+        { title: "Age Criteria strictly enforced", desc: "Candidate must be at least 16 years and 6 months old by July 31, 2026.", iconKey: "check" },
+        { title: "Outstanding Placement Records", desc: "Highest package of ₹1.10 Crore and average of ₹8.5 LPA.", iconKey: "trophy" },
+        { title: "Flagship Chennai KTR Campus", desc: "Over 250 acres of modern academic facilities and safe hostels.", iconKey: "map" },
+        { title: "Global Recruiters Portfolio", desc: "Top companies like Google, Microsoft, Amazon, Siemens recruit regularly.", iconKey: "building" },
+        { title: "Robust CS & IT Ecosystem", desc: "Advanced labs focusing on AI, Machine Learning, and Cybersecurity.", iconKey: "code" },
+        { title: "Direct Admissions Pathway", desc: "Available for board toppers and highly-qualified JEE candidates.", iconKey: "sparkles" },
+        { title: "100% Reliable Guidance", desc: "SS Education handles all steps of application and seat allotment.", iconKey: "users" },
+      ],
+    },
+    process: [
+      { title: "Initial Assessment", desc: "We review your 12th Board marks (verify 60% PCM eligibility) and check your age." },
+      { title: "Pathway Selection", desc: "We evaluate eligibility for SRMJEEE booking vs direct/NRI seats." },
+      { title: "Application Verification", desc: "Detailed document collection and application submission guidance." },
+      { title: "Counseling & Selection", desc: "Guided choice-filling during the SRM counselling phases." },
+      { title: "Admission Formalities", desc: "Verification of seat allotment, fee payment schedule, and hostel allocation." },
+    ],
+    faqs: [
+      { q: "What is the minimum board marks required for SRM B.Tech?", a: "Candidates must have passed 10+2 or equivalent with a minimum aggregate of 60% in Physics, Chemistry, and Mathematics (PCM). For Delhi-NCR and Andhra Pradesh campuses, the minimum aggregate required is 50%." },
+      { q: "Is there an age limit for SRM admissions?", a: "Yes. Candidates must have attained the age of 16 years and 6 months as of July 31 of the admission year (July 31, 2026)." },
+      { q: "Can I get direct admission in SRM without SRMJEEE?", a: "Yes. Direct admission is offered to top rankers of state boards, CBSE, district toppers in Tamil Nadu, and top JEE Main rankers. NRI and Management quota seats are also available through proper channels." },
+      { q: "How does SS Education assist with SRM admissions?", a: "We provide comprehensive guidance on eligibility checks, online registration, choice selection during counselling rounds, and guide you through hostel booking and documentation." },
+    ],
+    cta: {
+      eyebrow: "SRM University Admissions 2026",
+      title: "Lock in Your Dream Seat at",
+      titleHighlight: "SRM Chennai 2026",
+      subline: "Connect with our SRM admission specialist for an eligibility audit and secure your seat today.",
+      image: celebrateImg,
+    },
+    seo: {
+      title: "SRM University B.Tech Admission 2026 — Direct Seat | SS Education",
+      description: "Direct B.Tech admission at SRM University Chennai Kattankulathur 2026. 60% PCM eligibility & age criteria. Call +91 99330 85333 for expert guidance.",
     },
   },
 };
