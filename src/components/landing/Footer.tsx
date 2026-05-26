@@ -115,6 +115,7 @@ export function Footer() {
               <ul className="mt-4 grid grid-cols-2 gap-3 text-sm text-primary-foreground/80">
                 {[
                   { label: "MBBS Admission", href: "/mbbs" },
+                  { label: "BTech Bengaluru 2026", href: "/btech-admission-bengaluru-2026" },
                   { label: "Career", href: "#" },
                   { label: "Investor", href: "#" },
                   { label: "Terms & Conditions", href: "#" },

@@ -16,6 +16,7 @@ import AdminDashboard from "./pages/AdminDashboard.tsx";
 import AdLandingPage from "./pages/AdLandingPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CollegeRoute from "./pages/CollegeRoute.tsx";
+import BTechAdmissionBengaluru2026 from "./pages/BTechAdmissionBengaluru2026.tsx";
 import { MainLayout } from "./components/layout/MainLayout";
 
 const queryClient = new QueryClient();
@@ -57,6 +58,9 @@ const App = () => (
           
           {/* Admin Panel */}
           <Route path="/admin" element={<AdminDashboard />} />
+          
+          {/* Standing Landing Page for BTech Bengaluru 2026 */}
+          <Route path="/btech-admission-bengaluru-2026" element={<MainLayout><BTechAdmissionBengaluru2026 /></MainLayout>} />
           
           {/* Catch-all */}
           <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />
