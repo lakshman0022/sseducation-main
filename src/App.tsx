@@ -17,6 +17,7 @@ import AdLandingPage from "./pages/AdLandingPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CollegeRoute from "./pages/CollegeRoute.tsx";
 import BTechAdmissionBengaluru2026 from "./pages/BTechAdmissionBengaluru2026.tsx";
+import MbbsAdmissionGuideIndia from "./pages/MbbsAdmissionGuideIndia.tsx";
 import { MainLayout } from "./components/layout/MainLayout";
 
 const queryClient = new QueryClient();
@@ -61,6 +62,9 @@ const App = () => (
           
           {/* Standing Landing Page for BTech Bengaluru 2026 */}
           <Route path="/btech-admission-bengaluru-2026" element={<MainLayout><BTechAdmissionBengaluru2026 /></MainLayout>} />
+          
+          {/* Standing Landing Page for MBBS Admission Guide India 2026 */}
+          <Route path="/mbbs-admission-guide-india" element={<MainLayout><MbbsAdmissionGuideIndia /></MainLayout>} />
           
           {/* Catch-all */}
           <Route path="*" element={<MainLayout><NotFound /></MainLayout>} />

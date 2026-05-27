@@ -116,6 +116,7 @@ export function Footer() {
                 {[
                   { label: "MBBS Admission", href: "/mbbs" },
                   { label: "BTech Bengaluru 2026", href: "/btech-admission-bengaluru-2026" },
+                  { label: "MBBS Guide India 2026", href: "/mbbs-admission-guide-india" },
                   { label: "Career", href: "#" },
                   { label: "Investor", href: "#" },
                   { label: "Terms & Conditions", href: "#" },
