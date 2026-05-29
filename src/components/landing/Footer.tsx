@@ -52,10 +52,10 @@ export function Footer() {
               viewport={{ once: true }}
               className="flex items-center gap-4"
             >
-              <img 
-                src={mainLogo} 
-                alt="SS Education" 
-                className="h-12 w-auto object-contain brightness-0 invert" 
+              <img
+                src={mainLogo}
+                alt="SS Education"
+                className="h-12 w-auto object-contain brightness-0 invert"
               />
               <div className="flex flex-col leading-tight">
                 <span className="font-black text-xl tracking-tight text-white">SS EDUCATION</span>
@@ -64,25 +64,25 @@ export function Footer() {
             </motion.div>
 
             <div className="space-y-8">
-            {offices.map((office, i) => (
-              <motion.div
-                key={office.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <h4 className="flex items-start gap-2 font-extrabold uppercase tracking-wide text-base text-primary-foreground">
-                  <MapPin className="h-5 w-5 text-accent-glow flex-shrink-0 mt-0.5" />
-                  {office.title}
-                </h4>
-                <div className="mt-3 pl-7 text-sm text-primary-foreground/70 leading-relaxed">
-                  {office.lines.map((line) => (
-                    <p key={line}>{line}</p>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+              {offices.map((office, i) => (
+                <motion.div
+                  key={office.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <h4 className="flex items-start gap-2 font-extrabold uppercase tracking-wide text-base text-primary-foreground">
+                    <MapPin className="h-5 w-5 text-accent-glow flex-shrink-0 mt-0.5" />
+                    {office.title}
+                  </h4>
+                  <div className="mt-3 pl-7 text-sm text-primary-foreground/70 leading-relaxed">
+                    {office.lines.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
 
@@ -117,6 +117,7 @@ export function Footer() {
                   { label: "MBBS Admission", href: "/mbbs" },
                   { label: "BTech Bengaluru 2026", href: "/btech-admission-bengaluru-2026" },
                   { label: "MBBS Guide India 2026", href: "/mbbs-admission-guide-india" },
+                  { label: "IEM Kolkata Guide 2026", href: "/iem-kolkata-admission-2026" },
                   { label: "Career", href: "#" },
                   { label: "Investor", href: "#" },
                   { label: "Terms & Conditions", href: "#" },
