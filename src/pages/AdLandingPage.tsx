@@ -38,7 +38,8 @@ const COLLEGE_DATA: Record<string, any> = {
 };
 
 const AdLandingPage = () => {
-  const { college } = useParams();
+  const { college: paramCollege } = useParams();
+  const college = paramCollege || window.location.pathname.split("/").filter(Boolean).pop();
   const data = COLLEGE_DATA[college || "kiit"] || COLLEGE_DATA.kiit;
 
   useEffect(() => {
@@ -58,12 +59,7 @@ const AdLandingPage = () => {
         script = document.createElement("script");
         script.id = scriptId;
         script.async = true;
-        // Construct code block equivalent
-        script.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K59J5S4M');`;
+        script.src = "https://www.googletagmanager.com/gtm.js?id=GTM-K59J5S4M";
         document.head.appendChild(script);
       }
 
