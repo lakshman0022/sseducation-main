@@ -6,8 +6,27 @@
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TF7BMPM6');</script>
+    })(window,document,'script','dataLayer','GTM-K59J5S4M');</script>
     <!-- End Google Tag Manager -->
+
+    <!-- Global Call Button Click Tracker -->
+    <script>
+      document.addEventListener('click', function(e) {
+        var target = e.target;
+        while (target && target !== document.body) {
+          if (target.tagName === 'A' && target.href && target.href.indexOf('tel:') === 0) {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event': 'call_button_click',
+              'click_url': target.href,
+              'phone_number': target.href.replace('tel:', '')
+            });
+            break;
+          }
+          target = target.parentNode;
+        }
+      });
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
@@ -100,7 +119,7 @@
 
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TF7BMPM6"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K59J5S4M"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
